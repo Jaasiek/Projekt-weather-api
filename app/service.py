@@ -1,5 +1,5 @@
 from datetime import datetime
-from app.model import AirQualityReading
+from app.model import AirQualityDataValidation
 
 
 class AirQualityService:
@@ -7,7 +7,7 @@ class AirQualityService:
         self.repository = repository
 
     def save_reading(self, data: dict):
-        reading = AirQualityReading.model_validate(data)
+        reading = AirQualityDataValidation.model_validate(data)
         self.repository.add(reading)
         return reading
 
