@@ -1,4 +1,5 @@
 import requests
+import sys
 
 BACKEND_URL = "http://localhost:5000/api/data"
 
@@ -43,11 +44,14 @@ def send_to_backend(reading):
     response = requests.post(BACKEND_URL, json=reading)
     if response.status_code == 201:
         print("Data correctly send to backend")
+        return "success"
     else:
         print(f"An error occurred{response.status_code}, {response.text}")
+        return "failed"
 
 
-def main(city):
+def main():
+    city = sys.argv[1]
     try:
         lat, lon = get_coordinates(city)
         data = fetch_air_quality_data(lat, lon)

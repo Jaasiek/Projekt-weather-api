@@ -18,5 +18,5 @@ class AirQualityDataValidation(BaseModel):
             try:
                 return datetime.fromisoformat(value)
             except ValueError:
-                raise ValueError("Invalid datetime format. Use ISO format.")
+                raise ValueError
         return value
