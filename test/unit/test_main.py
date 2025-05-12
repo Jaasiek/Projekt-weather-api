@@ -11,12 +11,12 @@ def client():
         yield client
 
 
-def test_api_data_missing_datetime(client):
+def test_api_data_missing_datetime(client) -> None:
     response = client.get("/api/data")
     assert response.status_code == 400
 
 
-def test_api_data_post_success(client):
+def test_api_data_post_success(client) -> None:
     payload = {
         "timestamp": datetime.utcnow().isoformat(),
         "pm10": 12.5,
@@ -30,7 +30,7 @@ def test_api_data_post_success(client):
     assert response.status_code == 201
 
 
-def test_api_data_get_no_data(client):
+def test_api_data_get_no_data(client) -> None:
     app = setup()
     app.config["TESTING"] = True
     with app.test_client() as test_client:

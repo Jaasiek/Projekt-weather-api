@@ -3,7 +3,7 @@ from app.service import AirQualityService
 from app.repository import AirQualityRepo
 
 
-def test_save_and_get_reading():
+def test_save_and_get_reading() -> None:
     repo = AirQualityRepo()
     service = AirQualityService(repo)
 
@@ -24,7 +24,7 @@ def test_save_and_get_reading():
     assert result.timestamp == saved.timestamp
 
 
-def test_service_invalid_data():
+def test_service_invalid_data() -> None:
     repo = AirQualityRepo()
     service = AirQualityService(repo)
 

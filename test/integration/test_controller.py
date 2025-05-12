@@ -1,7 +1,7 @@
 import pytest
 from main import setup
-from datetime import datetime, timedelta
-import json
+from datetime import datetime
+
 
 
 @pytest.fixture
@@ -11,7 +11,7 @@ def client():
     return app.test_client()
 
 
-def test_post_valid_data(client):
+def test_post_valid_data(client) -> None:
     data = {
         "timestamp": datetime.utcnow().isoformat(),
         "pm10": 30,
@@ -27,7 +27,7 @@ def test_post_valid_data(client):
     assert res_json["data"]["pm10"] == 30
 
 
-def test_post_invalid_data(client):
+def test_post_invalid_data(client) -> None:
     data = {
         "timestamp": datetime.utcnow().isoformat(),
         "pm10": -50,
@@ -41,7 +41,7 @@ def test_post_invalid_data(client):
     assert response.status_code == 400
 
 
-def test_get_closest_reading(client):
+def test_get_closest_reading(client) -> None:
     ts = datetime.utcnow().replace(microsecond=0)
     data = {
         "timestamp": ts.isoformat(),

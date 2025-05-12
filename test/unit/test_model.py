@@ -3,7 +3,7 @@ from app.model import AirQualityDataValidation
 from datetime import datetime
 
 
-def test_valid_reading():
+def test_valid_reading() -> None:
     data = {
         "timestamp": "2024-05-01T12:00:00",
         "pm10": 20,
@@ -18,7 +18,7 @@ def test_valid_reading():
     assert isinstance(reading.timestamp, datetime)
 
 
-def test_invalid_pm10():
+def test_invalid_pm10() -> None:
     data = {
         "timestamp": "2024-05-01T12:00:00",
         "pm10": -5,
@@ -32,7 +32,7 @@ def test_invalid_pm10():
         AirQualityDataValidation.model_validate(data)
 
 
-def test_invalid_pm2_5():
+def test_invalid_pm2_5() -> None:
     data = {
         "timestamp": "2024-05-01T12:00:00",
         "pm10": 10,
@@ -46,7 +46,7 @@ def test_invalid_pm2_5():
         AirQualityDataValidation.model_validate(data)
 
 
-def test_invalid_co():
+def test_invalid_co() -> None:
     data = {
         "timestamp": "2024-05-01T12:00:00",
         "pm10": 5,
@@ -60,7 +60,7 @@ def test_invalid_co():
         AirQualityDataValidation.model_validate(data)
 
 
-def test_invalid_no2():
+def test_invalid_no2() -> None:
     data = {
         "timestamp": "2024-05-01T12:00:00",
         "pm10": 5,
@@ -74,7 +74,7 @@ def test_invalid_no2():
         AirQualityDataValidation.model_validate(data)
 
 
-def test_invalid_so2():
+def test_invalid_so2() -> None:
     data = {
         "timestamp": "2024-05-01T12:00:00",
         "pm10": 5,
@@ -88,7 +88,7 @@ def test_invalid_so2():
         AirQualityDataValidation.model_validate(data)
 
 
-def test_invalid_ozone():
+def test_invalid_ozone() -> None:
     data = {
         "timestamp": "2024-05-01T12:00:00",
         "pm10": -5,
@@ -102,7 +102,7 @@ def test_invalid_ozone():
         AirQualityDataValidation.model_validate(data)
 
 
-def test_invalid_timestamp():
+def test_invalid_timestamp() -> None:
     data = {
         "timestamp": "TechniSchools",
         "pm10": -5,
