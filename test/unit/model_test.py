@@ -2,6 +2,7 @@ import pytest
 from app.model import AirQualityDataValidation
 from datetime import datetime
 
+
 def test_valid_reading():
     data = {
         "timestamp": "2024-05-01T12:00:00",
@@ -16,6 +17,7 @@ def test_valid_reading():
     assert reading.pm10 == 20
     assert isinstance(reading.timestamp, datetime)
 
+
 def test_invalid_pm10():
     data = {
         "timestamp": "2024-05-01T12:00:00",
@@ -28,6 +30,7 @@ def test_invalid_pm10():
     }
     with pytest.raises(Exception):
         AirQualityDataValidation.model_validate(data)
+
 
 def test_invalid_pm2_5():
     data = {
@@ -42,6 +45,7 @@ def test_invalid_pm2_5():
     with pytest.raises(Exception):
         AirQualityDataValidation.model_validate(data)
 
+
 def test_invalid_co():
     data = {
         "timestamp": "2024-05-01T12:00:00",
@@ -54,6 +58,7 @@ def test_invalid_co():
     }
     with pytest.raises(Exception):
         AirQualityDataValidation.model_validate(data)
+
 
 def test_invalid_no2():
     data = {
@@ -68,6 +73,7 @@ def test_invalid_no2():
     with pytest.raises(Exception):
         AirQualityDataValidation.model_validate(data)
 
+
 def test_invalid_so2():
     data = {
         "timestamp": "2024-05-01T12:00:00",
@@ -81,6 +87,7 @@ def test_invalid_so2():
     with pytest.raises(Exception):
         AirQualityDataValidation.model_validate(data)
 
+
 def test_invalid_ozone():
     data = {
         "timestamp": "2024-05-01T12:00:00",
@@ -93,6 +100,7 @@ def test_invalid_ozone():
     }
     with pytest.raises(Exception):
         AirQualityDataValidation.model_validate(data)
+
 
 def test_invalid_timestamp():
     data = {
