@@ -50,8 +50,7 @@ def send_to_backend(reading):
         return "failed"
 
 
-def main():
-    city = sys.argv[1]
+def main(city):
     try:
         lat, lon = get_coordinates(city)
         data = fetch_air_quality_data(lat, lon)
@@ -59,3 +58,8 @@ def main():
         send_to_backend(reading)
     except Exception as e:
         print("An error occurred", e)
+
+
+if __name__ == "__main__":
+    city = input("Type city for which you want to collect data: ")
+    main(city=city)
