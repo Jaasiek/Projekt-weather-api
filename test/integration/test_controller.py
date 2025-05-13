@@ -3,7 +3,6 @@ from main import setup
 from datetime import datetime
 
 
-
 @pytest.fixture
 def client():
     app = setup()
