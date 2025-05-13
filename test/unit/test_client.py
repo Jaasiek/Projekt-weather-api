@@ -1,5 +1,4 @@
 import client
-import main
 
 
 def test_get_coordinates() -> None:
